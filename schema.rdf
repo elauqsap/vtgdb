@@ -1,0 +1,52 @@
+<!--shared-->
+ip: string @index(exact, trigram) .
+host: string @index(exact, term, trigram) .
+domain: string .
+class: string .
+bunit: string .
+location: geo @index(geo) .
+
+<!--app schema-->
+app_name: string @index(exact, term, trigram) .
+app_type: string .
+app_criticality: int .
+app_pci: bool .
+app_hipaa: bool .
+app_sox: bool .
+
+<!--user endpoint schema-->
+end_owner: string .
+end_manager: string .
+
+<!--user schema-->
+user_id: string @index .
+user_name: string .
+
+<!--bunit schema-->
+bunit_name: string .
+buint_primary: string .
+buint_secondary: string .
+
+<!--finding schema-->
+finding_status: string .
+finding_proto: int .
+finding_ssl: bool .
+finding_source: string .
+vulnerable_host: string .
+vulnerable_to: string .
+first_found: datetime @index(datetime) .
+last_found: datetime @index(datetime) .
+
+<!--vuln schema-->
+vuln_id: string @index(exact) .
+vuln_sig: string @index(exact, term, trigram) .
+vuln_ref: string @index(exact, term, trigram) .
+vuln_sev: int .
+vuln_category: string .
+vuln_cvss_base: float .
+vuln_cvss_temporal: float .
+vuln_pci: bool .
+vuln_patchable: bool .
+vuln_published: datetime @index(datetime) .
+
+<!--threat schema-->
